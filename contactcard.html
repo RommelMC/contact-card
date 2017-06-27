@@ -55,10 +55,10 @@
     </div>
 
     <script>
-        var people = [];
+        // var people = [];
         $(document).on('click', '.card', function(){
-                $(this).find('.side1').slideUp();
-                $(this).find('.side2').slideDown();
+                $(this).find('.side1').toggle();
+                $(this).find('.side2').toggle();
         });
         $("form").submit(function(e){
             e.preventDefault();
@@ -68,7 +68,7 @@
                 return false;
             }
             var name = $("#fName").val() + " " +  $("#lName").val();
-            people.push({name: $("#desc").val()});
+            // people.push({name: $("#desc").val()});
             $("#allCards").append("<div class='card'><div class='side1'><p style='font-size: 25px;'>" + name + "</p><p style='font-size: 18px;'>Click for description</p></div><p class='side2'>" + $('#desc').val() + "</p>");
             $("#fName").val("");
             $("#lName").val("");
