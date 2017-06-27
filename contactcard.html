@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <title>Contact Card</title>
+    <style>
+        input[type=submit]{
+            display: block;
+            box-shadow: 2px 2px 2px black;
+        }
+
+        form{
+            display: inline-block;
+            vertical-align: top;
+            margin-right: 100px;
+        }
+
+        #allCards{
+            display: inline-block;
+            width: 400px;
+            height: 600px;
+            /*background-color: yellow;*/
+        }
+
+        .card{
+            width: 360px;
+            height: 160px;
+            margin-bottom: 15px;
+            text-align: center;
+            /*background-color: aqua;*/
+            vertical-align: top;
+            padding: 20px;
+            border: 4px solid black;
+        }
+
+        .side2{
+            display: none;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <form>
+            <p>First name: <input id="fName" type="text"></p>
+            <p>Last name: <input id="lName" type="text"></p>
+            <p>Description:</p> 
+            <textarea name="description" id="desc" placeholder="Enter description" cols="30" rows="5"></textarea>
+            <input type="submit" value="Add User">
+        </form>
+        <div id="allCards">
+
+        </div>
+    </div>
+
+    <script>
+        var people = [];
+        $(document).on('click', '.card', function(){
+                $(this).find('.side1').slideUp();
+                $(this).find('.side2').slideDown();
+        });
+        $("form").submit(function(e){
+            e.preventDefault();
+            var name = $("#fName").val() + " " +  $("#lName").val();
+            people.push({name: $("#desc").val()});
+            $("#allCards").append("<div class='card'><div class='side1'><p style='font-size: 25px;'>" + name + "</p><p style='font-size: 18px;'>Click for description</p></div><p class='side2'>" + $('#desc').val() + "</p>");
+            $("#fName").val("");
+            $("#lName").val("");
+            $("#desc").val("");
+
+        });
+    </script>
+</body>
+</html>
