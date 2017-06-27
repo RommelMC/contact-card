@@ -62,6 +62,11 @@
         });
         $("form").submit(function(e){
             e.preventDefault();
+            if($("#fName").val() == "" || $("#lName").val() == "" || $("#desx").val() == "")
+            {
+                alert("Complete form");
+                return false;
+            }
             var name = $("#fName").val() + " " +  $("#lName").val();
             people.push({name: $("#desc").val()});
             $("#allCards").append("<div class='card'><div class='side1'><p style='font-size: 25px;'>" + name + "</p><p style='font-size: 18px;'>Click for description</p></div><p class='side2'>" + $('#desc').val() + "</p>");
